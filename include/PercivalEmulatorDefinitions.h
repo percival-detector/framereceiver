@@ -23,12 +23,12 @@ namespace PercivalEmulator {
 
     static const size_t packet_header_size     = 54; // NB As of 25/1/16 firmware incomplete so fields are not properly implemented
     static const size_t pixel_data_size_offset = 0;  // not yet present
-    static const size_t packet_type_offset     = 0;  // should be 2
-    static const size_t subframe_number_offset = 1;  // should be 3
-    static const size_t frame_number_offset    = 2;  // should be 4
-    static const size_t packet_number_offset   = 6;  // should be 8
+    static const size_t packet_type_offset     = 2;  // should be 2
+    static const size_t subframe_number_offset = 3;  // should be 3
+    static const size_t frame_number_offset    = 4;  // should be 4
+    static const size_t packet_number_offset   = 8;  // should be 8
     static const size_t packet_offset_offset   = 10; // not yet present
-    static const size_t frame_info_offset      = 8;  // should be 12
+    static const size_t frame_info_offset      = 12;  // should be 12
 
     static const size_t frame_info_size        = 42;
 

@@ -32,12 +32,14 @@ PercivalEmulatorFrameDecoder::PercivalEmulatorFrameDecoder(LoggerPtr& logger,
         LOG4CXX_INFO(packet_logger_, "PktHdr: SourceAddress");
         LOG4CXX_INFO(packet_logger_, "PktHdr: |               SourcePort");
         LOG4CXX_INFO(packet_logger_, "PktHdr: |               |     DestinationPort");
-        LOG4CXX_INFO(packet_logger_, "PktHdr: |               |     |      PacketType [1 Byte]");
-        LOG4CXX_INFO(packet_logger_, "PktHdr: |               |     |      |  SubframeNumber [1 Byte]");
-        LOG4CXX_INFO(packet_logger_, "PktHdr: |               |     |      |  |  FrameNumber [4 Bytes]");
-        LOG4CXX_INFO(packet_logger_, "PktHdr: |               |     |      |  |  |           PacketNumber [2 Bytes]");
-        LOG4CXX_INFO(packet_logger_, "PktHdr: |               |     |      |  |  |           |       Info [14 Bytes]");
-        LOG4CXX_INFO(packet_logger_, "PktHdr: |               |     |      |  |  |           |       |");
+        LOG4CXX_INFO(packet_logger_, "PktHdr: |               |     |      Pixel Data Size [2 Byte]");
+        LOG4CXX_INFO(packet_logger_, "PktHdr: |               |     |      |     PacketType [1 Byte]");
+        LOG4CXX_INFO(packet_logger_, "PktHdr: |               |     |      |     |  SubframeNumber [1 Byte]");
+        LOG4CXX_INFO(packet_logger_, "PktHdr: |               |     |      |     |  |  FrameNumber [4 Bytes]");
+        LOG4CXX_INFO(packet_logger_, "PktHdr: |               |     |      |     |  |  |             PacketNumber [2 Bytes]");
+        LOG4CXX_INFO(packet_logger_, "PktHdr: |               |     |      |     |  |  |             |     Packet Offset [2 Bytes]");
+        LOG4CXX_INFO(packet_logger_, "PktHdr: |               |     |      |     |  |  |             |     |     Info [42 Bytes]");
+        LOG4CXX_INFO(packet_logger_, "PktHdr: |               |     |      |     |  |  |             |     |     |");
     }
 }
 

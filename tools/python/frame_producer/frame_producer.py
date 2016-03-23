@@ -24,14 +24,14 @@ class FrameProducer(object):
     # Define custom class for Percival header
     if p2m_emulator_new_firmware:
 
-        #InfoSize =42
-        #HeaderType = np.dtype([('PixelDataSize', '>i2'), ('PacketType', '>i1'), ('SubframeNumber', '>i1'), ('FrameNumber', '>i4'), ('PacketNumber', '>i2'), 
-        #                       ('PacketOffset', '>i2'), ('Information', '>i1', InfoSize)])
+        InfoSize =42
+        HeaderType = np.dtype([('PixelDataSize', '>i2'), ('PacketType', '>i1'), ('SubframeNumber', '>i1'), ('FrameNumber', '>i4'), ('PacketNumber', '>i2'), 
+                               ('PacketOffset', '>i2'), ('Information', '>i1', InfoSize)])
         
         # Temporary implementation 28-Jan-16: current reduced packet size emulator firmware increases header size to 54 bytes but does not
         # implement fields correctly - existing fields left in place
-        InfoSize = 46
-        HeaderType = np.dtype([('PacketType', '>i1'), ('SubframeNumber', '>i1'), ('FrameNumber', '>i4'), ('PacketNumber', '>i2'), ('Information', '>i1', InfoSize)])
+        #InfoSize = 46
+        #HeaderType = np.dtype([('PacketType', '>i1'), ('SubframeNumber', '>i1'), ('FrameNumber', '>i4'), ('PacketNumber', '>i2'), ('Information', '>i1', InfoSize)])
         
         PayloadLength = 4928
         
@@ -139,14 +139,15 @@ class FrameProducer(object):
         header['SubframeNumber']    = 0   # Subframe Number    (1 Byte)
         header['FrameNumber']       = 0   # Frame Number       (4 Bytes)    
         header['PacketNumber']      = 0   # Packet Number      (2 Bytes)
+        header['PacketOffset']      = 0
         header['Information']       = 0   # Information        (14/42/46 Bytes)
         
         if p2m_emulator_new_firmware:
             
             # Not currently filled by emulator firmware
-            pass
-            #header['PixelDataSize'] = self.PayloadLength
-            #header['PacketOffset'] = 0
+            #pass
+            header['PixelDataSize'] = self.PayloadLength
+            header['PacketOffset'] = 0
         
         totalBytesSent = 0
         runStartTime = time.time()
