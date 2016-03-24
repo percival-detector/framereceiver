@@ -280,7 +280,8 @@ void PercivalEmulatorFrameDecoder::monitor_buffers(void)
 #ifdef P2M_EMULATOR_NEW_FIRMWARE
 uint16_t PercivalEmulatorFrameDecoder::get_pixel_data_size(void) const
 {
-    return *(reinterpret_cast<uint16_t*>(raw_packet_header()+PercivalEmulator::pixel_data_size_offset));
+    uint16_t pixel_data_size_raw = *(reinterpret_cast<uint16_t*>(raw_packet_header()+PercivalEmulator::pixel_data_size_offset));
+    return ntohs(pixel_data_size_raw);
 }
 #endif
 
@@ -309,7 +310,8 @@ uint16_t PercivalEmulatorFrameDecoder::get_packet_number(void) const
 #ifdef P2M_EMULATOR_NEW_FIRMWARE
 uint16_t PercivalEmulatorFrameDecoder::get_packet_offset(void) const
 {
-    return *(reinterpret_cast<uint16_t*>(raw_packet_header()+PercivalEmulator::packet_offset_offset));
+    uint16_t packet_offset_raw = *(reinterpret_cast<uint16_t*>(raw_packet_header()+PercivalEmulator::packet_offset_offset));
+    return ntohs(packet_offset_raw);
 }
 #endif
 
